@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cannabis Museum Amsterdam – RLpartners</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background:#0a1a0a; font-family:'Poppins',sans-serif; color:#e8f5e9; min-height:100vh; overflow-x:hidden; }
+    .leaf { position:fixed; animation:fall linear infinite; opacity:.13; pointer-events:none; z-index:0; }
+    @keyframes fall { 0%{transform:translateY(-60px) rotate(0deg); opacity:.16;} 100%{transform:translateY(110vh) rotate(360deg); opacity:0;} }
+    .flag-stripe { height:10px; background:linear-gradient(to right,#AE1C28 33.3%,#fff 33.3% 66.6%,#21468B 66.6%); width:100%; }
+    .hero { position:relative; z-index:1; text-align:center; padding:36px 20px 24px; background:linear-gradient(180deg,#0d2e0d 0%,#0a1a0a 100%); border-bottom:3px solid #2e7d32; }
+    .badge { background:radial-gradient(circle,#1b5e20 0%,#0d2e0d 70%); border:4px solid #66bb6a; border-radius:50%; width:148px; height:148px; display:flex; flex-direction:column; align-items:center; justify-content:center; margin:0 auto 18px; animation:pulse 3s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{box-shadow:0 0 30px #388e3c88;} 50%{box-shadow:0 0 55px #66bb6acc;} }
+    .badge .leaf-icon { font-size:3rem; }
+    .badge .badge-text { font-family:'Bebas Neue',cursive; font-size:.7rem; letter-spacing:2px; color:#a5d6a7; margin-top:2px; }
+    h1.title { font-family:'Bebas Neue',cursive; font-size:clamp(2.2rem,8vw,4.6rem); color:#66bb6a; letter-spacing:4px; text-shadow:0 0 20px #388e3c,2px 2px 0 #000; line-height:1; }
+    h1.title span { color:#fff; }
+    .subtitle { font-family:'Bebas Neue',cursive; font-size:clamp(.85rem,2.5vw,1.3rem); color:#a5d6a7; letter-spacing:6px; margin-top:5px; }
+    .open-badge { display:inline-block; margin-top:12px; background:#1b5e20; border:2px solid #66bb6a; border-radius:30px; padding:5px 16px; font-size:.76rem; letter-spacing:2px; color:#c8e6c9; }
+    .card { position:relative; z-index:1; max-width:700px; margin:32px auto; background:linear-gradient(135deg,#0d2e0d 0%,#122212 100%); border:2px solid #2e7d32; border-radius:20px; padding:34px 26px; text-align:center; box-shadow:0 8px 40px #000a; }
+    .official-tag { display:inline-block; background:#AE1C28; color:#fff; font-family:'Bebas Neue',cursive; letter-spacing:3px; font-size:.86rem; padding:4px 16px; border-radius:4px; margin-bottom:16px; }
+    .sellers-title { font-family:'Bebas Neue',cursive; font-size:clamp(1.05rem,3.2vw,1.6rem); color:#c8e6c9; letter-spacing:3px; margin-bottom:22px; }
+    .sellers-grid { display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin-bottom:26px; }
+    .seller-card { background:linear-gradient(160deg,#1b5e20 0%,#0d2e0d 100%); border:2px solid #388e3c; border-radius:16px; padding:20px 22px; flex:1; min-width:165px; max-width:205px; transition:transform .3s, box-shadow .3s; }
+    .seller-card:hover { transform:translateY(-6px); box-shadow:0 12px 30px #388e3c55; }
+    .seller-card .avatar { font-size:2.6rem; margin-bottom:7px; }
+    .seller-card .name { font-family:'Bebas Neue',cursive; font-size:1.65rem; color:#66bb6a; letter-spacing:2px; }
+    .seller-card .role { font-size:.66rem; color:#81c784; letter-spacing:1px; margin-top:2px; }
+    .divider { width:60px; height:3px; background:linear-gradient(to right,#2e7d32,#66bb6a,#2e7d32); margin:0 auto 22px; border-radius:2px; }
+    .funny-section { margin:28px 0 6px; }
+    .funny-section h2 { font-family:'Bebas Neue',cursive; font-size:1.25rem; color:#ffeb3b; letter-spacing:3px; margin-bottom:14px; }
+    .funny-box { background:linear-gradient(135deg,#1a2e0a 0%,#0d1f0d 100%); border:2px solid #ffeb3b44; border-radius:14px; padding:22px 18px; min-height:110px; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; cursor:pointer; transition:border-color .3s, opacity .25s, transform .25s; }
+    .funny-box:hover { border-color:#ffeb3b99; }
+    .funny-emoji { font-size:2rem; }
+    .funny-text { font-size:clamp(.82rem,2.3vw,.97rem); color:#fff9c4; line-height:1.55; font-style:italic; }
+    .funny-hint { font-size:.62rem; color:#66bb6a; letter-spacing:2px; margin-top:6px; }
+    .footer-stripe { height:8px; background:linear-gradient(to right,#AE1C28 33.3%,#fff 33.3% 66.6%,#21468B 66.6%); width:100%; position:fixed; bottom:0; left:0; z-index:10; }
+    footer { position:relative; z-index:1; text-align:center; padding:16px 20px 26px; font-size:.66rem; color:#388e3c; letter-spacing:2px; }
+  </style>
+</head>
+<body>
+<script>
+  const emojis = ["🌿","🍃","🌱"];
+  for(let i=0;i<18;i++){
+    const el=document.createElement("div");
+    el.className="leaf";
+    el.textContent=emojis[i%emojis.length];
+    el.style.left=Math.random()*100+"vw";
+    el.style.animationDuration=(7+Math.random()*10)+"s";
+    el.style.animationDelay=(Math.random()*10)+"s";
+    el.style.fontSize=(1.1+Math.random()*1.4)+"rem";
+    document.body.appendChild(el);
+  }
+
+  const jokes = [
+    { emoji:"🌿", text:"Angely y Valentina llevan tanto tiempo en Ámsterdam que ya le hablan holandés a las plantas... y las plantas responden." },
+    { emoji:"😂", text:"Nuestro producto estrella: el seguro contra relajamiento extremo. Cobertura total en caso de quedarse dormido en el sofá." },
+    { emoji:"🤣", text:"Angely dice que su secreto de ventas es la persuasión aromática. Valentina dice que es lo mismo pero con más estilo." },
+    { emoji:"🏆", text:"RLpartners ganó el Mundial antes de que empezara. La delegación de Holanda ya tiene sus vendedoras favoritas." },
+    { emoji:"🌷", text:"Valentina le explicó a la familia su trabajo en Ámsterdam. Dijo que era florista. Técnicamente no es mentira." },
+    { emoji:"🧀", text:"Angely intentó vender pólizas en el Coffee Shop. Los clientes se relajaban tanto escuchándola que se olvidaban de firmar." },
+    { emoji:"😅", text:"En la sucursal Holanda de RLpartners, las reuniones empiezan siempre con 45 minutos de reflexión profunda de equipo." },
+    { emoji:"🛵", text:"Valentina se mueve en bicicleta por toda Ámsterdam. Angely también, pero la suya va mucho más despaaacio." },
+    { emoji:"🇳🇱", text:"Holanda tiene tulipanes, molinos y queso. RLpartners tiene todo eso... más Angely y Valentina, que valen por los tres." },
+    { emoji:"💼", text:"Slogan no aprobado por el Dpto. Jurídico: Seguros que te dejan tan tranquilo... que ni los necesitas." },
+    { emoji:"🌈", text:"Una vez preguntaron en RLpartners quién era la más seria. Las dos respondieron al mismo tiempo: depende del cliente." },
+    { emoji:"🚲", text:"En Ámsterdam la gente va en bici. Angely y Valentina van en bici, pero con actitud de pasarela." },
+    { emoji:"🥳", text:"El único riesgo real aquí es que te guste tanto el mensaje que termines entrando dos veces al QR." },
+    { emoji:"🍀", text:"Dicen que la suerte se busca, pero en Holanda la suerte ya viene con tulipanes y una buena sonrisa." },
+    { emoji:"🕶️", text:"Si esta página fuera un seguro, tendría cobertura total contra aburrimiento." },
+    { emoji:"📣", text:"Angely anuncia ofertas con tanto entusiasmo que hasta los molinos se detienen a escuchar." },
+    { emoji:"🌍", text:"Mundial 2026, Holanda y RLpartners: combinación oficial para decorar, reír y quedar bien." },
+    { emoji:"💚", text:"Valentina dice que el secreto del éxito es tener paz mental... y un buen fondo verde." },
+    { emoji:"😎", text:"La única póliza que no necesita letra pequeña es la de pasarla bien viendo esta página." },
+    { emoji:"🎉", text:"Si llegaste hasta aquí, felicidades: ya eres parte del tour oficial de Ámsterdam versión RLpartners." }
+  ];
+
+  const seed = new Date().toDateString() + navigator.userAgent;
+  let hash = 0;
+  for (let i = 0; i < seed.length; i++) hash = (hash * 31 + seed.charCodeAt(i)) >>> 0;
+  const initial = hash % jokes.length;
+  let current = initial;
+
+  function showJoke(idx){
+    document.getElementById("funny-emoji").textContent = jokes[idx].emoji;
+    document.getElementById("funny-text").textContent = "“" + jokes[idx].text + "”";
+  }
+  function nextJoke(){
+    current = (current + 1) % jokes.length;
+    const box = document.getElementById("funny-box");
+    box.style.opacity = "0";
+    box.style.transform = "scale(0.96)";
+    setTimeout(()=>{ showJoke(current); box.style.opacity = "1"; box.style.transform = "scale(1)"; }, 250);
+  }
+  window.addEventListener("DOMContentLoaded",()=>{ showJoke(initial); });
+</script>
+
+<div class="flag-stripe"></div>
+
+<header class="hero">
+  <div class="badge">
+    <div class="leaf-icon">🌿</div>
+    <div class="badge-text">AMSTERDAM</div>
+  </div>
+  <h1 class="title">Cannabis Museum<br/><span>·Amsterdam·</span></h1>
+  <div class="subtitle">Est. 1985 — Damstraat 6</div>
+  <div class="open-badge">⏰ OPEN 9:00 – 22:00 EVERY DAY</div>
+</header>
+
+<main>
+  <div class="card">
+    <div class="official-tag">🏆 VENDEDORAS OFICIALES</div>
+    <div class="sellers-title">Representantes Oficiales en Ámsterdam</div>
+
+    <div class="sellers-grid">
+      <div class="seller-card">
+        <div class="avatar">👩</div>
+        <div class="name">Angely</div>
+        <div class="role">🌿 Vendedora Oficial · Ámsterdam</div>
+      </div>
+      <div class="seller-card">
+        <div class="avatar">👩</div>
+        <div class="name">Valentina</div>
+        <div class="role">🌿 Vendedora Oficial · Ámsterdam</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="funny-section">
+      <h2>😂 Mensaje aleatorio</h2>
+      <div class="funny-box" id="funny-box" onclick="nextJoke()">
+        <div class="funny-emoji" id="funny-emoji">🌿</div>
+        <div class="funny-text" id="funny-text"></div>
+        <div class="funny-hint">👆 Toca para otro mensaje</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  🌿 RLpartners · CANNABIS MUSEUM AMSTERDAM · DAMSTRAAT 6 · HOLANDA 🇳🇱
+</footer>
+
+<div class="footer-stripe"></div>
+</body>
+</html>
