@@ -7,6 +7,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    .avatar {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 20%;
+      display: block;
+      margin: 0 auto 10px;
+    }
     body { background:#0a1a0a; font-family:'Poppins',sans-serif; color:#e8f5e9; min-height:100vh; overflow-x:hidden; }
     .leaf { position:fixed; animation:fall linear infinite; opacity:.13; pointer-events:none; z-index:0; }
     @keyframes fall { 0%{transform:translateY(-60px) rotate(0deg); opacity:.16;} 100%{transform:translateY(110vh) rotate(360deg); opacity:0;} }
@@ -58,24 +66,24 @@
   const jokes = [
     { emoji:"🌿", text:"Angely y Valentina llevan tanto tiempo en Ámsterdam que ya le hablan holandés a las plantas... y las plantas responden." },
     { emoji:"😂", text:"Nuestro producto estrella: el seguro contra relajamiento extremo. Cobertura total en caso de quedarse dormido en el sofá." },
-    { emoji:"🤣", text:"Angely dice que su secreto de ventas es la persuasión aromática. Valentina dice que es lo mismo pero con más estilo." },
+    { emoji:"🤣", text:"Angely dice que su secreto de ventas es la persuasión aromática. Valentina dice que es su tono de voz." },
     { emoji:"🏆", text:"RLpartners ganó el Mundial antes de que empezara. La delegación de Holanda ya tiene sus vendedoras favoritas." },
     { emoji:"🌷", text:"Valentina le explicó a la familia su trabajo en Ámsterdam. Dijo que era florista. Técnicamente no es mentira." },
-    { emoji:"🧀", text:"Angely intentó vender pólizas en el Coffee Shop. Los clientes se relajaban tanto escuchándola que se olvidaban de firmar." },
-    { emoji:"😅", text:"En la sucursal Holanda de RLpartners, las reuniones empiezan siempre con 45 minutos de reflexión profunda de equipo." },
-    { emoji:"🛵", text:"Valentina se mueve en bicicleta por toda Ámsterdam. Angely también, pero la suya va mucho más despaaacio." },
+    { emoji:"🧀", text:"Angely intentó vender pólizas en el Coffee Shop. Los clientes se relajaban tanto escuchándola que se olvidaban de dar su aprobación." },
+    { emoji:"😅", text:"En la sucursal Holanda de RLpartners, las reuniones empiezan siempre con 45 minutos de reflexión profunda en equipo." },
+    { emoji:"🩺", text:"Te confirmamos que en Holanda el cannabis es medicinal, no para lo que tu estabas pensando" },
     { emoji:"🇳🇱", text:"Holanda tiene tulipanes, molinos y queso. RLpartners tiene todo eso... más Angely y Valentina, que valen por los tres." },
     { emoji:"💼", text:"Slogan no aprobado por el Dpto. Jurídico: Seguros que te dejan tan tranquilo... que ni los necesitas." },
     { emoji:"🌈", text:"Una vez preguntaron en RLpartners quién era la más seria. Las dos respondieron al mismo tiempo: depende del cliente." },
-    { emoji:"🚲", text:"En Ámsterdam la gente va en bici. Angely y Valentina van en bici, pero con actitud de pasarela." },
-    { emoji:"🥳", text:"El único riesgo real aquí es que te guste tanto el mensaje que termines entrando dos veces al QR." },
+    { emoji:"🚲", text:"En Ámsterdam la gente va en bici y canoa. Valentina no sabe manejar bici y Angely le teme a la canoa" },
+    { emoji:"🥳", text:"El único riesgo real aquí es que te guste tanto el mensaje que termines entrando dos veces al QR y confirmando que Holanda es el equipo ganador." },
     { emoji:"🍀", text:"Dicen que la suerte se busca, pero en Holanda la suerte ya viene con tulipanes y una buena sonrisa." },
     { emoji:"🕶️", text:"Si esta página fuera un seguro, tendría cobertura total contra aburrimiento." },
     { emoji:"📣", text:"Angely anuncia ofertas con tanto entusiasmo que hasta los molinos se detienen a escuchar." },
-    { emoji:"🌍", text:"Mundial 2026, Holanda y RLpartners: combinación oficial para decorar, reír y quedar bien." },
-    { emoji:"💚", text:"Valentina dice que el secreto del éxito es tener paz mental... y un buen fondo verde." },
-    { emoji:"😎", text:"La única póliza que no necesita letra pequeña es la de pasarla bien viendo esta página." },
-    { emoji:"🎉", text:"Si llegaste hasta aquí, felicidades: ya eres parte del tour oficial de Ámsterdam versión RLpartners." }
+    { emoji:"🌍", text:"Mundial 2026, Holanda y RLpartners: combinación oficial para decorar, reír y quedar ganadoras." },
+    { emoji:"💚", text:"Valentina dice que el secreto del éxito es tener paz mental... y una buena planta verde." },
+    { emoji:"😎", text:"La única póliza que no necesita letra pequeña es la de pasarla bien divirtiéndote en nuestSro museo." },
+    { emoji:"🎉", text:"Si llegaste hasta aquí, felicidades: ya eres parte del tour oficial de Holanda(Paises Bajos) versión RLpartners." }
   ];
 
   const seed = new Date().toDateString() + navigator.userAgent;
@@ -117,12 +125,12 @@
 
     <div class="sellers-grid">
       <div class="seller-card">
-        <div class="avatar">👩</div>
+        <img src="angely.png" alt="Angely" class="avatar">
         <div class="name">Angely</div>
         <div class="role">🌿 Vendedora Oficial · Ámsterdam</div>
       </div>
       <div class="seller-card">
-        <div class="avatar">👩</div>
+        <img src="valentina.png" alt="Valentina" class="avatar">
         <div class="name">Valentina</div>
         <div class="role">🌿 Vendedora Oficial · Ámsterdam</div>
       </div>
